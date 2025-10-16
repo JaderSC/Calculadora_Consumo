@@ -1,0 +1,61 @@
+body {
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.conteiner {
+  display: flex;
+  width: 400px;
+  height: 500px;
+  border: 2px solid;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgb(153, 173, 173);
+}
+
+.conteiner-form {
+  align-items: center;
+}
+
+form {
+  display: block;
+  padding: 10px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+form input {
+  width: 100%;
+  margin-top: 10px;
+  margin: 10px auto;
+  padding: 8px 0;
+}
+
+.input-radio{
+   display: flex;
+   justify-content: center;
+  
+}
+
+
+
+form label {
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 8px 0;
+}
+
+button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px 0;
+  font-size: 20px;
+ 
+}
