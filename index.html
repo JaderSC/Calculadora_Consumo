@@ -14,23 +14,23 @@
 
         <div class="conteiner-form">
           <div class="input-radio">
-            <input type="radio" name="Combustivel" class="inputCombustivel" id="Etanol" value="Etanol" />
+            <input required type="radio" name="Combustivel" class="inputCombustivel" id="Etanol" value="Etanol" />
             <label for="Etanol">Etanol</label>
 
-            <input type="radio" name="Combustivel" class="inputCombustivel" id="Gasolina" value="Gasolina" />
+            <input required type="radio" name="Combustivel" class="inputCombustivel" id="Gasolina" value="Gasolina" />
             <label for="Gasolina">Gasolina</label>
           </div>
 
           <form action="">
             <label for="">Digite o Consumo do Veiculo (Km/L)</label>
-            <input type="number" id="consumo"/>
+            <input required type="number" id="consumo"/>
             <label for="">Digite a Velocidade Media (Km/h)</label>
-            <input type="number" id="velocidade" />
+            <input required type="number" id="velocidade" />
             <label for="">Selecione o tempo da Viagem </label>
-            <input type="time"  id="duracao"/>
+            <input required type="time"  id="duracao"/>
              <button>Calcular</button>
           </form>
- <span>Resultado</span>
+            <p></p>
         </div>
        
         

@@ -12,19 +12,16 @@ const elemento = {
 };
 
 const veiculo = {
-   
-    modelo: "FORD KA",
-    consumoMedio: 14,
-
-    
+  modelo: "FORD KA",
+  consumoMedio: 14,
 };
 
 const viagem = {
-    velocidadeMedia: "",
-    duracao: "",
-    percurso: "",
-    consumoLitros: "",
-    custoEmReais: "",
+  velocidadeMedia: "",
+  duracao: "",
+  percurso: "",
+  consumoLitros: "",
+  custoEmReais: "",
 };
 
 const combustivel = {
@@ -44,19 +41,65 @@ input.combustivel.forEach((radio) => {
 elemento.formulario.addEventListener("submit", (evento) => {
   evento.preventDefault();
   calcularConsumo();
-  
 });
 
-function calcularConsumo(){
+function calcularConsumo() {
 
-    viagem.duracao = input.duracao.value;
+  // \variaveis para capturar o valor da Hora e Minuto
+  viagem.duracao = input.duracao.value;
   viagem.velocidadeMedia = input.velocidade.value;
 
-  let hora = viagem.duracao.slice(0, 2);
-  let minuto = viagem.duracao.slice(3);
-  console.log(hora, minuto);
+  // captura do valor do consumo médio do veículo digitado pelo usuário
 
-}
+  veiculo.consumoMedio = input.consumo.value;
 
-viagem.percurso = viagem.duracao * viagem.velocidadeMedia;
-viagem.consumoLitros = Math.round(viagem.percurso / veiculo.consumoMedio);
+  console.log(veiculo.consumoMedio);
+
+  // metodo para cortart o simbolo de ":" da hora e minuto, separamndo em variaveis
+
+  let hora = +viagem.duracao.slice(0, 2);
+  let minuto = Number(viagem.duracao.slice(3));
+
+  //let calculaHora = ((hora * 60) + minuto) / 24;
+
+  // formula para calcular a distancia percorrida pelo usuario
+
+   viagem.percurso = (
+    viagem.velocidadeMedia *
+    ((hora * 60 + minuto) / 60)
+  ).toFixed(2);
+
+  // metodo para substituir "." por "," na exibição da distancia total
+
+  console.log(viagem.percurso.replace('.' , ',') + " KM");
+
+  viagem.consumoLitros = viagem.percurso / veiculo.consumoMedio;
+
+console.log(viagem.consumoLitros);
+
+const paragrafo = document.querySelector("p");
+console.log(paragrafo)
+
+// calculo para saber o custo real em litros
+
+if(combustivel.tipo.toLocaleLowerCase() === 'etanol'){
+  viagem.custoEmReais = viagem.consumoLitros * combustivel.precoEtanol;
+
+  paragrafo.innerText = `O Custo Total da Viagem foi de: ${viagem.custoEmReais.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
+   Total de combustivel utilizado na viagem foi:  ${viagem.consumoLitros.toFixed(2).replace('.' , ',') } Litros distancia percorrida foi de ${viagem.percurso.replace('.' , ',') } Km`
+
+  // metodo para formatar o resultado como moeda (R$)
+  console.log(`Custo do Etanol: ${viagem.custoEmReais.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`)
+} else{
+   viagem.custoEmReais = viagem.consumoLitros * combustivel.precoGasolina
+
+   paragrafo.innerText = `O Custo Total da Viagem foi de: ${viagem.custoEmReais.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
+   Total de combustivel utilizado na viagem foi:  ${viagem.consumoLitros.toFixed(2).replace('.' , ',') } Litros distancia percorrida foi de ${viagem.percurso.replace('.' , ',')} Km`
+
+    console.log(`Custo da Gasolina: ${viagem.custoEmReais.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`)
+};
+
+};
+
+
+
