@@ -69,6 +69,14 @@ function calcularConsumo() {
     ((hora * 60 + minuto) / 60)
   ).toFixed(2);
 
+  // condição para reduzir o clor da distancia caso o usuario utilize etanol
+
+  if (combustivel.tipo.toLowerCase() === 'etanol'){
+    viagem.percurso = viagem.percurso - ((viagem.percurso * 0,3) * 100)  
+  }
+
+  console.log(viagem.percurso)
+
   // metodo para substituir "." por "," na exibição da distancia total
 
   console.log(viagem.percurso.replace('.' , ',') + " KM");
@@ -94,7 +102,8 @@ if(combustivel.tipo.toLocaleLowerCase() === 'etanol'){
    viagem.custoEmReais = viagem.consumoLitros * combustivel.precoGasolina
 
    paragrafo.innerText = `O Custo Total da Viagem foi de: ${viagem.custoEmReais.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}
-   Total de combustivel utilizado na viagem foi:  ${viagem.consumoLitros.toFixed(2).replace('.' , ',') } Litros distancia percorrida foi de ${viagem.percurso.replace('.' , ',')} Km`
+   Total de combustivel utilizado na viagem foi:  ${viagem.consumoLitros.toFixed(2).replace('.' , ',') } Litros
+    Distancia Percorrida foi de ${viagem.percurso.replace('.' , ',')} Km`
 
     console.log(`Custo da Gasolina: ${viagem.custoEmReais.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`)
 };
