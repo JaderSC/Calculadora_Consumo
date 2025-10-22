@@ -41,9 +41,9 @@ form input {
 .input-radio{
    display: flex;
    justify-content: center;
+   gap: 20px;
   
 }
-
 
 
 form label {
