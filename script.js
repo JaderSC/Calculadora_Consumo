@@ -105,7 +105,7 @@ function calcularConsumo() {
      .replace(
        ".",
        ","
-     )} Litros distancia percorrida foi de ${viagem.percurso} Km`;
+     )} Litros distancia percorrida foi de ${viagem.percurso.replace(".",",")} Km`;
 
   // metodo para formatar o resultado como moeda (R$)
   // console.log(
